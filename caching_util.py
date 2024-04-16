@@ -116,7 +116,7 @@ def cache_data(url, data):
 
     if existing_record:
         # Check if the record was updated less than CACHE_DAY day ago
-        last_updated = datetime.strptime(existing_record[2], "%Y-%m-%d %H:%M:%S")
+        last_updated = datetime.strptime(existing_record[2], "%Y-%m-%d %H:%M:%S.%f")
         if datetime.now() - last_updated < timedelta(days=CACHE_DAY):
             logging.info(f"Data for URL {url} already cached and updated less than {CACHE_DAY} day ago. Skipping update.")
             return
